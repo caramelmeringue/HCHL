@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">해체해라</string>
+
+    <string-array name="team_code">
+        <item >NC</item>
+        <item >LG</item>
+        <item >HT</item>
+        <item >KT</item>
+        <item >SK</item>
+        <item >LT</item>
+        <item >OB</item>
+        <item >HH</item>
+        <item >WO</item>
+        <item >SS</item>
+    </string-array>
+
+    <string-array name="team_name">
+        <item >NC</item>
+        <item >LG</item>
+        <item >KIA</item>
+        <item >KT</item>
+        <item >SK</item>
+        <item >롯데</item>
+        <item >두산</item>
+        <item >한화</item>
+        <item >넥센</item>
+        <item >삼성</item>
+    </string-array>
+
+    <!-- 분단위 -->
+    <integer-array name="sync_term_code">
+        <item >1</item>
+        <item >5</item>
+        <item >15</item>
+        <item >30</item>
+        <item >60</item>
+        <item >360</item>
+    </integer-array>
+
+    <string-array name="sync_term_name">
+        <item >1분</item>
+        <item >5분</item>
+        <item >15분</item>
+        <item >30분</item>
+        <item >1시간</item>
+        <item >24시간</item>
+    </string-array>
+</resources>
