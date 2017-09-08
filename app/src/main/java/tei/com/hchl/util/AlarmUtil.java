@@ -1,4 +1,4 @@
-package tei.com.hchl.notification;
+package tei.com.hchl.util;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import java.util.Calendar;
+
+import tei.com.hchl.receiver.AlarmReceiver;
 
 public class AlarmUtil {
     private static final int ALARM_ID = 1;

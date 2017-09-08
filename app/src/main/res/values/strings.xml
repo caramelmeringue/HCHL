@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">해체해라</string>
 
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+
     <string-array name="team_code">
         <item >NC</item>
         <item >LG</item>

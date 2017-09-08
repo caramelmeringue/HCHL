@@ -1,4 +1,4 @@
-package tei.com.hchl.data;
+package tei.com.hchl.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by ktds on 2017-06-30.
  */
 
-public class Data {
+public class DataUtil {
     private static SharedPreferences sharedPreferences;
 
     public static SharedPreferences getSharedPreferences(Context context) {

@@ -19,11 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingActivity"></activity>
 
-        <receiver android:name=".notification.AlarmReceiver"></receiver>
+        <receiver android:name=".receiver.AlarmReceiver"></receiver>
 
-        <receiver android:name=".notification.StartReceiver">
+        <receiver android:name=".receiver.StartReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>

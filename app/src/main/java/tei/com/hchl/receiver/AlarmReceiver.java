@@ -1,10 +1,10 @@
-package tei.com.hchl.notification;
+package tei.com.hchl.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import tei.com.hchl.notification.NotificationUtil;
+import tei.com.hchl.util.NotificationUtil;
 
 public class AlarmReceiver extends BroadcastReceiver {
     @Override

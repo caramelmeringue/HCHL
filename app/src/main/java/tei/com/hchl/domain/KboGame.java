@@ -1,10 +1,10 @@
-package tei.com.hchl.game;
+package tei.com.hchl.domain;
 
 /**
  * Created by ktds on 2017-06-28.
  */
 
-public class Game {
+public class KboGame {
     private String LE_ID;
     private String SR_ID;
     private String SEASON_ID;

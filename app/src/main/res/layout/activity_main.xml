@@ -1,110 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="tei.com.hchl.MainActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/main_content_layout"
-        style="@style/activity_background"
-        android:gravity="center">
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/main_series_no"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="-50dp"/>
-
+        <!-- 그제 우리팀 경기 -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            style="@style/block_default">
+            <TextView
+                android:id="@+id/before_before_game_info"
+                style="@style/text_default"/>
+            <View
+                style="@style/space"/>
+            <TextView
+                android:id="@+id/before_before_game_result"
+                style="@style/text_default"
+                android:gravity="right"/>
+        </LinearLayout>
 
+        <!-- 어제 우리팀 경기 -->
+        <LinearLayout
+            style="@style/block_default">
+            <TextView
+                android:id="@+id/before_game_info"
+                style="@style/text_default"/>
+            <View
+                style="@style/space"/>
+            <TextView
+                android:id="@+id/before_game_result"
+                style="@style/text_default"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <!-- 오늘 우리팀 경기 -->
+        <LinearLayout
+            style="@style/block_main"
+            android:orientation="vertical"
+            android:background="#5D5D5D">
+
+            <!-- 몇차전 | 몇시 몇분 -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/main_away_emblem"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"/>
-
+                style="@style/inner_block">
                 <TextView
-                    android:id="@+id/main_away_pitcher"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="25sp"/>
-
+                    android:id="@+id/my_team_vs_game_count"
+                    style="@style/text_default_light"/>
+                <TextView
+                    android:id="@+id/my_team_time_place"
+                    style="@style/text_default_light"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/main_vs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center|center_vertical"
-                android:textColor="@android:color/white"
-                android:textSize="65sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="vs"/>
-
+            <!-- 팀 vs 팀 -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/main_home_emblem"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"/>
-
-                <TextView
-                    android:id="@+id/main_home_pitcher"
+                style="@style/inner_block"
+                android:gravity="center">
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="25sp" />
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/my_team_away_nm"
+                        style="@style/text_default_light_xl"/>
+                    <TextView
+                        android:id="@+id/my_team_away_pitcher_nm"
+                        style="@style/text_default_light"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/my_team_vs_text"
+                    style="@style/text_default_light"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="vs"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/my_team_home_nm"
+                        style="@style/text_default_light_xl"/>
+                    <TextView
+                        android:id="@+id/my_team_home_pitcher_nm"
+                        style="@style/text_default_light"/>
+                </LinearLayout>
+            </LinearLayout>
 
+            <!-- 점수 또는 경기상태 -->
+            <LinearLayout
+                style="@style/inner_block"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/my_team_status"
+                    style="@style/text_default_light"/>
             </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/main_game_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="-25dp"
-            android:textSize="25sp"/>
+        <View
+            style="@style/space"/>
+
+        <!-- 타구장 -->
+        <LinearLayout
+            style="@style/block_default"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/text_default"
+                    android:text="타구장 상황"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/other_team_1"
+                        style="@style/text_default"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/other_team_2"
+                        style="@style/text_default"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/other_team_3"
+                        style="@style/text_default"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/other_team_4"
+                        style="@style/text_default"
+                        android:gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/main_setting_button"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_margin="10dip"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"
-        android:src="@drawable/button"
-        android:layout_gravity="bottom|right"
-        android:alpha="0.6"/>
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/side"
+        style="@style/side">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/setting_my_team_emblem"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/emblem_l_nc"/>
+                <Spinner
+                    android:id="@+id/setting_team"
+                    style="@style/spinner_team"
+                    android:entries="@array/team_name"/>
+            </FrameLayout>
+            <View
+                style="@style/space"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right">
+                <TextView
+                    style="@style/text_default_light"/>
+                <TextView
+                    style="@style/text_default_light"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_default_light"/>
+            <View
+                style="@style/space"/>
+            <TextView
+                style="@style/text_default_light"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_default_light"/>
+            <View
+                style="@style/space"/>
+            <TextView
+                style="@style/text_default_light"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_default_light"
+                android:text="동기화 주기"/>
+            <View
+                style="@style/space"/>
+            <Spinner
+                android:id="@+id/setting_sync_term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/sync_term_name"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_default_light"
+                android:text="아이콘 알림 여부"/>
+            <View
+                style="@style/space"/>
+            <Switch
+                android:id="@+id/setting_alarm_yn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>

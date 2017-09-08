@@ -1,4 +1,4 @@
-package tei.com.hchl.notification;
+package tei.com.hchl.util;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,18 +8,19 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 
-import tei.com.hchl.game.Game;
-import tei.com.hchl.game.GameUtil;
+import tei.com.hchl.domain.KboGame;
+import tei.com.hchl.util.GameUtil;
 import tei.com.hchl.MainActivity;
 import tei.com.hchl.R;
-import tei.com.hchl.data.Data;
+import tei.com.hchl.util.DataUtil;
 
 public class NotificationUtil {
     final static int NOTIFICATION_CODE = 0;
 
     public static void setNotification(Context context) {
-        String teamCode = context.getResources().getStringArray(R.array.team_code)[Data.getInt(context, "team", 0)];
-        Game game = GameUtil.getGame(teamCode);
+        String teamCode = context.getResources().getStringArray(R.array.team_code)[DataUtil.getInt(context, "team", 0)];
+        GameUtil gameUtil = new GameUtil();
+        KboGame game = gameUtil.getKboGame(teamCode, gameUtil.getDate());
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(context.getResources().getIdentifier("emblem_s_"+teamCode.toLowerCase(), "drawable", context.getPackageName()))
                 .setPriority(NotificationCompat.PRIORITY_MAX);
@@ -29,20 +30,20 @@ public class NotificationUtil {
                    .setContentTitle(game.getAWAY_NM() + " vs " + game.getHOME_NM() + " " + game.getVS_GAME_CN() + "차전");
 
             if (game.getGAME_STATE_SC().equals("1")) { // 경기전
-                Data.save(context, "home_pitcher", game.getB_PIT_P_NM());
-                Data.save(context, "away_pitcher", game.getT_PIT_P_NM());
+                DataUtil.save(context, "home_pitcher", game.getB_PIT_P_NM());
+                DataUtil.save(context, "away_pitcher", game.getT_PIT_P_NM());
 
                 builder.setContentText("경기전 "+game.getT_PIT_P_NM().trim()+" vs "+game.getB_PIT_P_NM().trim()+" ("+game.getG_TM()+" "+game.getS_NM()+")");
             } else if (game.getGAME_STATE_SC().equals("2")) { // 경기중
                 if (game.getGAME_TB_SC().equals("T")) {
-                    Data.save(context, "home_pitcher", game.getB_P_NM().trim());
+                    DataUtil.save(context, "home_pitcher", game.getB_P_NM().trim());
 
-                    String awayPitcher = Data.getString(context, "away_pitcher", game.getT_P_NM().trim());
+                    String awayPitcher = DataUtil.getString(context, "away_pitcher", game.getT_P_NM().trim());
                     builder.setContentText(game.getGAME_INN_NO()+game.getGAME_TB_SC_NM()+" "+awayPitcher+" vs "+game.getB_P_NM().trim()+" ("+game.getT_SCORE_CN()+":"+game.getB_SCORE_CN()+")");
                 } else if (game.getGAME_TB_SC().equals("B")) {
-                    Data.save(context, "away_pitcher", game.getT_P_NM().trim());
+                    DataUtil.save(context, "away_pitcher", game.getT_P_NM().trim());
 
-                    String homePitcher = Data.getString(context, "home_pitcher", game.getB_P_NM().trim());
+                    String homePitcher = DataUtil.getString(context, "home_pitcher", game.getB_P_NM().trim());
                     builder.setContentText(game.getGAME_INN_NO()+game.getGAME_TB_SC_NM()+" "+game.getT_P_NM().trim()+" vs "+homePitcher+" ("+game.getT_SCORE_CN()+":"+game.getB_SCORE_CN()+")");
                 } else {
                     builder.setContentText(game.getGAME_INN_NO()+game.getGAME_TB_SC_NM()+" "+game.getT_P_NM().trim()+" vs "+game.getB_P_NM().trim()+" ("+game.getT_SCORE_CN()+":"+game.getB_SCORE_CN()+")");
